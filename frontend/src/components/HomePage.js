@@ -1,7 +1,14 @@
 import React from "react";
+import AllNews from "./AllNews";
+import UserNavi from "./UserNavi";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <UserNavi />
+      <AllNews />
+    </>
+  );
 };
 
 export default HomePage;
