@@ -19,6 +19,10 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
     navigate(`newschange/${id}`);
   };
 
+  const handleView = (e) => {
+    navigate(`newsdetail/${id}`);
+  };
+
   const deleteRequest = async () => {
     const res = await axios
       .delete(`http://localhost:4000/api/blog/${id}`)
@@ -50,6 +54,7 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
           boxShadow: "10px 10px 20px #ccc",
         },
       }}
+      onClick={handleView}
     >
       {isLoggedIn && (
         <Box>

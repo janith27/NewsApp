@@ -1,7 +1,10 @@
-import React from "react";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const UserNavi = () => {
+  const [value, setValue] = useState();
   return (
     <AppBar
       position="sticky"
@@ -12,6 +15,15 @@ const UserNavi = () => {
     >
       <Toolbar>
         <Typography variant="h4">NewsApp</Typography>
+        <Box display="flex" marginLeft={"auto"} marginRight="auto">
+          <Tabs
+            textColor="inherit"
+            value={value}
+            onChange={(e, val) => setValue(val)}
+          >
+            <Tab LinkComponent={Link} to="/allnews" label="News" />
+          </Tabs>
+        </Box>
       </Toolbar>
     </AppBar>
   );
