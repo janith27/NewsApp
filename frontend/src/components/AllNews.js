@@ -19,6 +19,7 @@ const AllNews = () => {
       {blogs &&
         blogs.map((blog, index) => (
           <NewsCard
+            id={blog._id}
             title={blog.title}
             briefDescription={blog.briefdescription}
             imageURL={blog.image}

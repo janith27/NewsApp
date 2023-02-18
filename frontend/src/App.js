@@ -18,11 +18,15 @@ function App() {
       <main>
         <Routes>
           {/* admin routes */}
-          <Route path="/admin/login" element={<Auth />} />
-          <Route path="/newschange" element={<NewsChange />} />
-          <Route path="/newsdetail/:id" element={<DetailPage />} />
-          <Route path="/admin/add" element={<AddNews />} />
-
+          {!isLoggedIn ? (
+            <Route path="/admin/login" element={<Auth />} />
+          ) : (
+            <>
+              <Route path="/allnews/newschange/:id" element={<NewsChange />} />
+              <Route path="/newsdetail/:id" element={<DetailPage />} />
+              <Route path="/admin/add" element={<AddNews />} />
+            </>
+          )}
           {/* user view path */}
           {!isLoggedIn && <Route path="/" element={<HomePage />} />}
 
