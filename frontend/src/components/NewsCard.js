@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { useSelector } from "react-redux";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Box } from "@mui/system";
@@ -54,7 +54,7 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
           boxShadow: "10px 10px 20px #ccc",
         },
       }}
-      onClick={handleView}
+      
     >
       {isLoggedIn && (
         <Box>
@@ -78,6 +78,7 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
           {briefDescription}
         </Typography>
       </CardContent>
+      <Button onClick={handleView} >More</Button>
     </Card>
   );
 };

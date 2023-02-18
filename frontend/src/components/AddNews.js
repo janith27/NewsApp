@@ -98,7 +98,9 @@ const AddNews = () => {
             variant="outlined"
           />
           <InputLabel sx={lableStyles}>ImageURL</InputLabel>
-          <TextField
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
             name="imageURL"
             onChange={handleChange}
             value={inputs.imageURL}
