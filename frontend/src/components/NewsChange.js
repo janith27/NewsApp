@@ -3,19 +3,27 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, InputLabel, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+
 const lableStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
+
 const NewsChange = () => {
   const navigate = useNavigate();
+
   const [blog, setBlog] = useState();
+
   const id = useParams().id;
+
   console.log(id);
+
   const [inputs, setInputs] = useState({});
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
   const fetchDetails = async () => {
     const res = await axios
       .get(`http://localhost:4000/api/blog/${id}`)
@@ -23,6 +31,7 @@ const NewsChange = () => {
     const data = await res.data;
     return data;
   };
+
   useEffect(() => {
     fetchDetails().then((data) => {
       setBlog(data.blog);
@@ -34,6 +43,7 @@ const NewsChange = () => {
       });
     });
   }, [id]);
+
   const sendRequest = async () => {
     const res = await axios
       .put(`http://localhost:4000/api/blog/update/${id}`, {
@@ -46,13 +56,18 @@ const NewsChange = () => {
     const data = await res.data;
     return data;
   };
+
   console.log(blog);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then((data) => console.log(data)).then(()=>navigate("/")).then(()=>navigate("/allnews"));
+    sendRequest()
+      .then((data) => console.log(data))
+      .then(() => navigate("/"))
+      .then(() => navigate("/allnews"));
   };
+
   return (
     <div>
       {inputs && (

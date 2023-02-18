@@ -5,13 +5,17 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
+
 const Auth = () => {
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -38,6 +42,7 @@ const Auth = () => {
       .then(() => navigate("/allnews"))
       .then((data) => console.log(data));
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>

@@ -14,9 +14,11 @@ import axios from "axios";
 
 const NewsCard = ({ title, briefDescription, imageURL, id }) => {
   const navigate = useNavigate();
+
   const handleEdit = (e) => {
     navigate(`newschange/${id}`);
   };
+
   const deleteRequest = async () => {
     const res = await axios
       .delete(`http://localhost:4000/api/blog/${id}`)
@@ -24,14 +26,18 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
     const data = await res.data;
     return data;
   };
+
   const handleDelete = (e) => {
     deleteRequest()
       .then((data) => console.log(data))
       .then(() => navigate("/"))
       .then(() => navigate("/allnews"));
   };
+
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   console.log(isLoggedIn);
+
   return (
     <Card
       sx={{
@@ -48,10 +54,10 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
       {isLoggedIn && (
         <Box>
           <IconButton onClick={handleEdit} sx={{ marginLeft: "auto" }}>
-            <ModeEditOutlineIcon color="warning"/>
+            <ModeEditOutlineIcon color="warning" />
           </IconButton>
           <IconButton onClick={handleDelete}>
-            <DeleteForeverIcon color="warning"/>
+            <DeleteForeverIcon color="warning" />
           </IconButton>
         </Box>
       )}

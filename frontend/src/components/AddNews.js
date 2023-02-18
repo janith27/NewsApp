@@ -3,21 +3,26 @@ import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 const lableStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
+
 const AddNews = () => {
   const navigate = useNavigate();
+
   const [inputs, setInputs] = useState({
     title: "",
     briefDescription: "",
     fullDescription: "",
     imageURL: "",
   });
+
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
+
   const sendRequest = async () => {
     const res = await axios
       .post("http://localhost:4000/api/blog/add", {
@@ -30,11 +35,16 @@ const AddNews = () => {
     const data = await res.data;
     return data;
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then((data) => console.log(data)).then(()=>navigate("/")).then(()=>navigate("/allnews"));
+    sendRequest()
+      .then((data) => console.log(data))
+      .then(() => navigate("/"))
+      .then(() => navigate("/allnews"));
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -81,13 +91,13 @@ const AddNews = () => {
           <TextField
             name="fullDescription"
             multiline
-          rows={10}
+            rows={10}
             onChange={handleChange}
             value={inputs.fullDescription}
             margin="auto"
             variant="outlined"
           />
-          <InputLabel sx={lableStyles}>imageURL</InputLabel>
+          <InputLabel sx={lableStyles}>ImageURL</InputLabel>
           <TextField
             name="imageURL"
             onChange={handleChange}

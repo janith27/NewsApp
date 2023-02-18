@@ -8,13 +8,19 @@ import AddNews from "./components/AddNews";
 import NewsChange from "./components/NewsChange";
 import AllNews from "./components/AllNews";
 import { useSelector } from "react-redux";
+import UserNavi from "./components/UserNavi";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   console.log(isLoggedIn);
+
   return (
     <>
-      <header>{isLoggedIn && <Header />}</header>
+      <header>
+        {isLoggedIn && <Header />}
+        {!isLoggedIn && <UserNavi />}
+      </header>
       <main>
         <Routes>
           {/* admin routes */}

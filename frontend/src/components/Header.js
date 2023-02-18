@@ -4,9 +4,12 @@ import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
+
 const Header = () => {
   const dispatch = useDispatch();
+
   const [value, setValue] = useState();
+
   return (
     <AppBar
       position="sticky"
