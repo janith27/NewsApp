@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 import { Card, CardMedia, Typography } from "@mui/material";
 const DetailPage = () => {
   const id = useParams().id;
-  
+
   console.log(id);
 
   const [blog, setBlog] = useState([]);
@@ -32,7 +32,7 @@ const DetailPage = () => {
           <CardMedia
             component="img"
             width="95%"
-            image={blog.image}
+            src={blog.image}
             alt="Paella dish"
           />
         </Card>

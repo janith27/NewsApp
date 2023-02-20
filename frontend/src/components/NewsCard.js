@@ -70,7 +70,7 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
       <CardMedia
         component="img"
         height="194"
-        image={imageURL}
+        src={imageURL}
         alt="Paella dish"
       />
       <CardContent>

@@ -8,14 +8,18 @@ const lableStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 
 const AddNews = () => {
   const navigate = useNavigate();
-
+  const [image, setImage] = useState(null);
   const [inputs, setInputs] = useState({
     title: "",
     briefDescription: "",
     fullDescription: "",
     imageURL: "",
   });
-
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setImage(imageUrl);
+  };
   const handleChange = (e) => {
     setInputs((prevState) => ({
       ...prevState,
@@ -29,7 +33,7 @@ const AddNews = () => {
         title: inputs.title,
         briefdescription: inputs.briefDescription,
         fulldescription: inputs.fullDescription,
-        image: inputs.imageURL,
+        image: image,
       })
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -102,8 +106,8 @@ const AddNews = () => {
             type="file"
             accept="image/png, image/jpeg"
             name="imageURL"
-            onChange={handleChange}
-            value={inputs.imageURL}
+            onChange={handleImageChange}
+            // value={inputs.imageURL}
             margin="auto"
             variant="outlined"
           />
