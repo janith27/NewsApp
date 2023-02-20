@@ -71,7 +71,7 @@ const NewsCard = ({ title, briefDescription, imageURL, id }) => {
         component="img"
         height="194"
         src={imageURL}
-        alt="Paella dish"
+        alt="Image"
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">

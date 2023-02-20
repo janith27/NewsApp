@@ -33,7 +33,7 @@ const DetailPage = () => {
             component="img"
             width="95%"
             src={blog.image}
-            alt="Paella dish"
+            alt="image"
           />
         </Card>
         <Typography textAlign={"center"}>{blog.fulldescription}</Typography>
